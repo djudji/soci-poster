@@ -1,0 +1,6 @@
+<% unless current_user.connections.where(provider: "#{provider}").any? %>
+  <%= link_to "Connect #{provider.capitalize}", "auth/#{provider}", class: "btn btn-#{provider_class} btn-block btn-sm" %>
+<% else %>
+  <%= link_to "Connect #{provider.capitalize}", "auth/#{provider}", class: "btn btn-#{provider_class} btn-block btn-sm", disabled: true %>
+  <%= link_to 'Disconnect', connection_path(current_user.connections.where(provider: "#{provider}").first), method: :delete %>
+<% end %>

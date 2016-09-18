@@ -24,3 +24,4 @@ gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap
 gem 'font-awesome-rails'
 gem 'simple_form'
 gem 'devise'
+gem 'dotenv-rails'

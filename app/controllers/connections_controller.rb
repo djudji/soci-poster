@@ -14,6 +14,10 @@ class ConnectionsController < ApplicationController
     redirect_to dashboard_path, notice: 'Connection terminated!' if @connection.destroy
   end
 
+  def omniauth_failure
+    redirect_to dashboard_path, notice: 'Authentication failed! Something went wrong.'
+  end
+
   private
 
   def auth_hash

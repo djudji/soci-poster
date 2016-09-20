@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'pages#dashboard'
 
   get 'auth/:provider/callback', to: 'connections#create'
+  get 'auth/failure', to: 'connections#omniauth_failure'
   resources :connections, only: :destroy
 end

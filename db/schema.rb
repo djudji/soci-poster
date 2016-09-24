@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160920201913) do
+ActiveRecord::Schema.define(version: 20160924140332) do
 
   create_table "connections", force: :cascade do |t|
     t.string   "provider"
@@ -28,8 +28,9 @@ ActiveRecord::Schema.define(version: 20160920201913) do
     t.integer  "user_id"
     t.boolean  "facebook"
     t.boolean  "twitter"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.boolean  "facebook_page"
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/derekprior/momentjs-rails.git
+  revision: fa8ac4899554775945704fd6b7a7b3c5ce1bde17
+  specs:
+    momentjs-rails (2.15.1)
+      railties (>= 3.1)
+
+GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
   revision: d3776ddd0b89d28fdebfd6e1c1541348cc90e5cc
   specs:
@@ -7,6 +14,15 @@ GIT
       execjs (>= 2.2.2, >= 2.2)
       less-rails (>= 2.5.0)
       railties (>= 3.1)
+
+GIT
+  remote: git://github.com/zpaulovics/datetimepicker-rails.git
+  revision: 36d21cec5da7f5b214925804f60e63c61c747023
+  branch: master
+  submodules: true
+  specs:
+    datetimepicker-rails (4.7.16)
+      momentjs-rails (>= 2.9.0)
 
 GEM
   remote: https://rubygems.org/
@@ -216,11 +232,13 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  datetimepicker-rails!
   devise
   dotenv-rails
   font-awesome-rails
   jquery-rails
   listen (~> 3.0.5)
+  momentjs-rails (~> 2.9)!
   omniauth-facebook
   omniauth-twitter
   puma (~> 3.0)

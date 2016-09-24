@@ -28,3 +28,5 @@ gem 'dotenv-rails'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'validates_timeliness', '~>3.0'
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails'

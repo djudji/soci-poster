@@ -11,6 +11,7 @@
     <% end %>
     <% if current_user.connections.where(provider: 'facebook').any? %>
       <%= f.input :facebook %>
+      <%= f.input :facebook_page %>
     <% end %>
   </div>
   <div class="form-actions">

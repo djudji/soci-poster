@@ -5,6 +5,10 @@ class Post < ApplicationRecord
   validates_presence_of :scheduled_at
   validates_length_of :content, maximum: 140, message: 'Less then 140 characters please'
   validates_datetime :scheduled_at, on: :create, on_or_after: Time.zone.now
+  after_create :schedule
+
+  scope :scheduled, -> { where(state: 'scheduled').order('scheduled_at ASC') }
+  scope :history,   -> { where.not(state: 'scheduled').order('scheduled_at DESC') }
 
   def to_twitter
     client = Twitter::REST::Client.new do |config|
@@ -28,5 +32,21 @@ class Post < ApplicationRecord
     page_access_token = fb_page[0]['access_token']
     page_graph = Koala::Facebook::API.new(page_access_token)
     page_graph.put_connections('me', 'feed', message: content)
+  end
+
+  def display
+    to_twitter if twitter
+    to_facebook if facebook
+    to_facebook_page if facebook_page
+    update_attributes(state: 'posted')
+  rescue StandardError => e
+    update_attributes(state: 'posting error', error: e.message)
+  end
+
+  def schedule
+    SchedulePostsJob.set(wait_until: scheduled_at).perform_later(self)
+    update_attributes(state: 'scheduled')
+  rescue StandardError => e
+    update_attributes(state: 'scheduled error', error: e.message)
   end
 end

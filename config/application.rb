@@ -14,5 +14,6 @@ module SociPoster
     # -- all .rb files in that directory are automatically loaded.
 
     config.active_job.queue_adapter = :delayed_job
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end

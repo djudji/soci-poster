@@ -6,5 +6,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    @scheduled = current_user.posts.scheduled
+    @history = current_user.posts.history
   end
 end

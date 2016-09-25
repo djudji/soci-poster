@@ -10,6 +10,6 @@
     <%= post.content %>
   </div>
   <div class="panel-footer">
-    <p><%= post.state.capitalize %></p>
+    <p><%= post.state.capitalize %> <%= link_to 'cancel post', cancel_post_path(post), method: :patch if post.state == 'scheduled' %> </p>
   </div>
 </div>

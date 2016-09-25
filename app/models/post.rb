@@ -35,6 +35,7 @@ class Post < ApplicationRecord
   end
 
   def display
+    return unless state == 'canceled'
     to_twitter if twitter
     to_facebook if facebook
     to_facebook_page if facebook_page
